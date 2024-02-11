@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs506b8kfpcox"]
+
+[ext_resource type="Texture2D" uid="uid://doksiiwcl2t3b" path="res://sprites/interactables_objs.png" id="1_nglia"]
+[ext_resource type="Script" path="res://scenes/assets/hurtbox.gd" id="2_fd1yc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ygmiw"]
+radius = 8.0
+
+[node name="ShootTarget" type="Node2D"]
+
+[node name="hurtbox" type="Area2D" parent="."]
+script = ExtResource("2_fd1yc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+z_index = 2
+shape = SubResource("CircleShape2D_ygmiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_nglia")
+hframes = 2
+vframes = 2
+
+[connection signal="area_entered" from="hurtbox" to="hurtbox" method="_on_area_entered"]
