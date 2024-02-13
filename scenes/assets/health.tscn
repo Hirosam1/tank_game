@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7t3kkfemxwnh"]
+
+[ext_resource type="Script" path="res://scripts/health.gd" id="1_rytob"]
+[ext_resource type="PackedScene" uid="uid://dfocbmfwlfbtn" path="res://scenes/assets/hurtbox.tscn" id="2_n3wl4"]
+
+[node name="Health" type="Node2D"]
+script = ExtResource("1_rytob")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_n3wl4")]

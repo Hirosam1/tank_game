@@ -29,8 +29,8 @@ func update_child_nodes():
 	tank_animation.current_speed = speed
 
 func _process(_delta):
-	mov_vec = Input.get_vector("player_mov_left", "player_mov_right", 
-	"player_mov_down", "player_mov_up")
+	mov_vec.x = Input.get_axis("player_mov_left","player_mov_right")
+	mov_vec.y = Input.get_axis("player_mov_down","player_mov_up")
 	update_child_nodes()
 
 func _physics_process(delta):
@@ -48,7 +48,7 @@ func _physics_process(delta):
 
 	rotation += ang_vel * delta
 	speed = clamp(speed+vel_add*delta,-top_speed,top_speed)
-	var speed_vec = Vector2.DOWN.rotated(rotation) * speed
-	var col: KinematicCollision2D =  move_and_collide(speed_vec*delta)
+	velocity = Vector2.DOWN.rotated(rotation) * speed
+	var col: KinematicCollision2D =  move_and_collide(velocity*delta)
 	if(col):
 		speed = 0

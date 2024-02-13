@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bp7aw70uocxxm" path="res://sprites/bullet.png" id="1_bsfbt"]
 [ext_resource type="Script" path="res://scripts/bullet_behaviour.gd" id="1_r7lil"]
-[ext_resource type="Script" path="res://scenes/assets/damage_box.gd" id="3_3gk7u"]
+[ext_resource type="Script" path="res://scripts/damagebox.gd" id="3_42u1w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dxqn"]
 radius = 3.16228
@@ -18,13 +18,17 @@ texture_filter = 1
 texture = ExtResource("1_bsfbt")
 
 [node name="DamageBox" type="Area2D" parent="."]
-script = ExtResource("3_3gk7u")
+script = ExtResource("3_42u1w")
+object_damage = 50
+root_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox"]
+z_index = 2
 shape = SubResource("CircleShape2D_1dxqn")
 
 [node name="LifeTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
+[connection signal="area_entered" from="DamageBox" to="DamageBox" method="_on_area_entered"]
 [connection signal="timeout" from="LifeTimer" to="." method="de_spawn"]
