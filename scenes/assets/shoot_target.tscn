@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs506b8kfpcox"]
+[gd_scene load_steps=13 format=3 uid="uid://cs506b8kfpcox"]
 
 [ext_resource type="Texture2D" uid="uid://doksiiwcl2t3b" path="res://sprites/interactables_objs.png" id="1_nglia"]
 [ext_resource type="Script" path="res://scripts/destructable_object.gd" id="1_pv3f2"]
-[ext_resource type="PackedScene" uid="uid://b7t3kkfemxwnh" path="res://scenes/assets/health.tscn" id="2_kln2l"]
 [ext_resource type="Texture2D" uid="uid://decrmkmjcdw50" path="res://sprites/fx_sheet.png" id="2_xeuee"]
 [ext_resource type="Script" path="res://scripts/destructable_object_animation.gd" id="3_0n40n"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="5_0so8n"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="6_k57i5"]
 
 [sub_resource type="Animation" id="Animation_qmni2"]
 length = 0.001
@@ -91,6 +92,9 @@ _data = {
 "destruction": SubResource("Animation_fboan")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ygmiw"]
+radius = 8.0
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vypn6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pk3u"]
@@ -107,7 +111,7 @@ z_index = 3
 texture_filter = 1
 texture = ExtResource("2_xeuee")
 hframes = 7
-frame = 1
+frame = 6
 
 [node name="ObjectSprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -121,7 +125,19 @@ libraries = {
 }
 script = ExtResource("3_0n40n")
 
-[node name="Health" parent="." instance=ExtResource("2_kln2l")]
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("5_0so8n")
+
+[node name="Hurtbox" type="Area2D" parent="Health"]
+z_index = 2
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("6_k57i5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Health/Hurtbox"]
+z_index = 2
+shape = SubResource("CircleShape2D_ygmiw")
+debug_color = Color(0.839216, 0.207843, 0.168627, 0.419608)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_vypn6")
@@ -134,5 +150,3 @@ shape = SubResource("RectangleShape2D_3pk3u")
 [connection signal="finished_destroy_animation" from="AnimationPlayer" to="." method="_on_animation_player_finished_destroy_animation"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="health_depleted" from="Health" to="AnimationPlayer" method="_on_health_health_depleted"]
-
-[editable path="Health"]

@@ -22,6 +22,8 @@ var top_angular_vel = 2.5
 var mov_vec = Vector2() 
 var speed = 0.0
 
+var is_alive=true
+
 func _ready():
 	tank_animation.max_speed = top_speed
 
@@ -38,3 +40,9 @@ func calc_current_ang_vel()->float:
 
 func _physics_process(delta):
 	pass
+	
+func _on_health_health_depleted():
+	is_alive=false
+
+func _on_tank_animation_finished_destroy_animation():
+	queue_free()

@@ -7,6 +7,8 @@ radius = 8.0
 
 [node name="Hurtbox" type="Area2D"]
 z_index = 2
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_rddwi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

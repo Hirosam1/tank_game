@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuv0eqnc48g81"]
+[gd_scene load_steps=9 format=3 uid="uid://cuv0eqnc48g81"]
 
 [ext_resource type="Texture2D" uid="uid://coahxyxvlestc" path="res://sprites/map1_tilemap.png" id="1_w7e88"]
 [ext_resource type="PackedScene" uid="uid://dhcf6ad46txkl" path="res://scenes/assets/tank_player.tscn" id="2_0e4me"]
 [ext_resource type="Script" path="res://scripts/camera_follower.gd" id="3_m3t6b"]
 [ext_resource type="PackedScene" uid="uid://cto6uew5e0ki3" path="res://scenes/assets/debug_ui.tscn" id="3_qyi4b"]
 [ext_resource type="PackedScene" uid="uid://cs506b8kfpcox" path="res://scenes/assets/shoot_target.tscn" id="4_2288j"]
+[ext_resource type="PackedScene" uid="uid://s3pysyl7fsky" path="res://scenes/assets/tank_ai.tscn" id="6_pdph3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_faksi"]
 texture = ExtResource("1_w7e88")
@@ -94,11 +95,10 @@ position = Vector2(-392, 104)
 [node name="ShootTarget6" parent="ShootTargets" instance=ExtResource("4_2288j")]
 position = Vector2(-344, 104)
 
+[node name="AITank" parent="." instance=ExtResource("6_pdph3")]
+position = Vector2(-360, -40)
+
 [editable path="ShootTargets/ShootTarget"]
-[editable path="ShootTargets/ShootTarget/Health"]
 [editable path="ShootTargets/ShootTarget2"]
-[editable path="ShootTargets/ShootTarget2/Health"]
 [editable path="ShootTargets/ShootTarget3"]
-[editable path="ShootTargets/ShootTarget3/Health"]
 [editable path="ShootTargets/ShootTarget5"]
-[editable path="ShootTargets/ShootTarget5/Health"]
