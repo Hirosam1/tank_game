@@ -35,7 +35,9 @@ func _process(_delta):
 
 ## Calculates current angular velocity based on player's speed
 func calc_current_ang_vel()->float:
-	var smooth_vel = smoothstep(0.0, 1.0, 1.0 - (abs(speed)/top_speed))
+	var smooth_margin = -5
+	var smooth_vel = smoothstep(top_speed-smooth_margin, 
+								0+smooth_margin, abs(speed))
 	return lerp(min_angular_velocity,top_angular_vel, smooth_vel)
 
 func _physics_process(delta):
@@ -54,3 +56,6 @@ func _physics_process(delta):
 	var col: KinematicCollision2D =  move_and_collide(velocity*delta)
 	if(col):
 		speed = 0
+
+func _on_health_health_depleted():
+	pass # Replace with function body.

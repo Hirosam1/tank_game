@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dxqn"]
 radius = 2.0
 
-[node name="Bullet" type="Node2D"]
+[node name="s" type="Node2D"]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_r7lil")
@@ -21,14 +21,14 @@ texture = ExtResource("1_bsfbt")
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("3_42u1w")
-object_damage = 50
+object_damage = 40
 root_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox"]
 z_index = 2
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_1dxqn")
-debug_color = Color(0.74902, 0.25098, 0.941176, 0.419608)
+debug_color = Color(0.89616, 0.108186, 0.720073, 0.419608)
 
 [node name="LifeTimer" type="Timer" parent="."]
 wait_time = 2.0

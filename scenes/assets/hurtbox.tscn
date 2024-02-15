@@ -14,4 +14,4 @@ script = ExtResource("1_rddwi")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 2
 shape = SubResource("CircleShape2D_ygmiw")
-debug_color = Color(0.839216, 0.207843, 0.168627, 0.419608)
+debug_color = Color(0.839216, 0.235294, 0.235294, 0.419608)

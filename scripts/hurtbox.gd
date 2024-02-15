@@ -10,5 +10,5 @@ var damage_negator := 0
 @export
 var id: String = ""
 
-func damage(val: int):
+func hurt(val: int):
 	get_parent().damage(self, val-damage_negator)

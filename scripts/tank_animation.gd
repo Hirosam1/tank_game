@@ -30,11 +30,9 @@ func _process(_delta):
 			speed_scale = anim_speed_scale
 
 func _on_health_health_depleted():
-	print("destroyed")
 	is_alive=false
 	play(destroy_animation)
 
 func _on_animation_finished(anim_name):
-	print("anim:  " + anim_name)
 	if(anim_name == destroy_animation):
 		finished_destroy_animation.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cs506b8kfpcox"]
+[gd_scene load_steps=15 format=3 uid="uid://cs506b8kfpcox"]
 
 [ext_resource type="Texture2D" uid="uid://doksiiwcl2t3b" path="res://sprites/interactables_objs.png" id="1_nglia"]
 [ext_resource type="Script" path="res://scripts/destructable_object.gd" id="1_pv3f2"]
@@ -6,6 +6,26 @@
 [ext_resource type="Script" path="res://scripts/destructable_object_animation.gd" id="3_0n40n"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="5_0so8n"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="6_k57i5"]
+
+[sub_resource type="Animation" id="Animation_e1rf2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FXSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jb7mn"]
+_data = {
+"RESET": SubResource("Animation_e1rf2")
+}
 
 [sub_resource type="Animation" id="Animation_qmni2"]
 length = 0.001
@@ -28,10 +48,10 @@ tracks/1/path = NodePath("FXSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -111,7 +131,6 @@ z_index = 3
 texture_filter = 1
 texture = ExtResource("2_xeuee")
 hframes = 7
-frame = 6
 
 [node name="ObjectSprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -121,6 +140,7 @@ vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
+"": SubResource("AnimationLibrary_jb7mn"),
 "destructable_object_animations": SubResource("AnimationLibrary_4wyrr")
 }
 script = ExtResource("3_0n40n")
