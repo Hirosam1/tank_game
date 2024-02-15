@@ -1,20 +1,25 @@
 ## Controlls the movement of the player controller,
 ## based on player input.
 extends CharacterBody2D
-## How much it increaces velocity per second.
+
+## How much it increaces speed (px/s) per second.
 @export
 var acceleration = 15.0
+
 ## How much speed is lost per second, not including player input.
 @export
 var deacceleration = 8.0
-## Maximum speed per second
+
+## Maximum speed.
 @export
 var top_speed = 200.0
-##Minimum angular velocity in radians
+
+##Minimum angular velocity in radians per seconds.
 @export
 var min_angular_velocity = 1.5
+
 ## The angular velocity at speed = 0, at others speeds it is 
-## interpolated with min_angular_velocity 
+## interpolated with min_angular_velocity .
 @export
 var top_angular_vel = 2.5
 

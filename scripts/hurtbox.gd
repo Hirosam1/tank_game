@@ -2,6 +2,7 @@
 ## any parent class.
 extends Area2D
 class_name  HurtBox
+
 ## How much damage this hurtbox will reduce.
 @export
 var damage_negator := 0

@@ -1,4 +1,5 @@
 extends Node2D
+
 ## Default speed of the bullet in px/s. May be changed depending on the 
 ## spawner speed.
 @export
