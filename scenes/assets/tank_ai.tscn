@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://s3pysyl7fsky"]
+[gd_scene load_steps=11 format=3 uid="uid://s3pysyl7fsky"]
 
+[ext_resource type="Script" path="res://scenes/assets/ai_controll.gd" id="1_fql4l"]
 [ext_resource type="Script" path="res://scripts/Player/player_bullet_spawner.gd" id="2_qgl60"]
 [ext_resource type="PackedScene" uid="uid://c3hyedkxtt3ul" path="res://scenes/assets/bullet.tscn" id="3_3xlnr"]
 [ext_resource type="Texture2D" uid="uid://djuirneunpx4e" path="res://sprites/AITank_sheet.png" id="4_xc4ad"]
@@ -67,6 +68,7 @@ _data = {
 z_index = 1
 y_sort_enabled = true
 motion_mode = 1
+script = ExtResource("1_fql4l")
 
 [node name="TankCollisionBox" type="CollisionShape2D" parent="."]
 z_index = 2
