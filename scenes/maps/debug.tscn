@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cuv0eqnc48g81"]
 
 [ext_resource type="Texture2D" uid="uid://coahxyxvlestc" path="res://sprites/map1_tilemap.png" id="1_w7e88"]
-[ext_resource type="PackedScene" uid="uid://dhcf6ad46txkl" path="res://scenes/assets/tank_controller.tscn" id="2_0e4me"]
+[ext_resource type="PackedScene" uid="uid://dhcf6ad46txkl" path="res://scenes/assets/tank_player.tscn" id="2_0e4me"]
 [ext_resource type="Script" path="res://scripts/camera_follower.gd" id="3_m3t6b"]
 [ext_resource type="PackedScene" uid="uid://cto6uew5e0ki3" path="res://scenes/assets/debug_ui.tscn" id="3_qyi4b"]
 [ext_resource type="PackedScene" uid="uid://cs506b8kfpcox" path="res://scenes/assets/shoot_target.tscn" id="4_2288j"]
