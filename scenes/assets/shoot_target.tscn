@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs506b8kfpcox"]
+[gd_scene load_steps=11 format=3 uid="uid://cs506b8kfpcox"]
 
 [ext_resource type="Texture2D" uid="uid://doksiiwcl2t3b" path="res://sprites/interactables_objs.png" id="1_nglia"]
 [ext_resource type="Script" path="res://scripts/destructable_object.gd" id="1_pv3f2"]
@@ -91,7 +91,14 @@ _data = {
 "destruction": SubResource("Animation_fboan")
 }
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vypn6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pk3u"]
+size = Vector2(20, 4)
+
 [node name="ShootTarget" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_pv3f2")
 
 [node name="FXSprite" type="Sprite2D" parent="."]
@@ -115,6 +122,13 @@ libraries = {
 script = ExtResource("3_0n40n")
 
 [node name="Health" parent="." instance=ExtResource("2_kln2l")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_vypn6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_3pk3u")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
 [connection signal="finished_destroy_animation" from="AnimationPlayer" to="." method="_on_animation_player_finished_destroy_animation"]

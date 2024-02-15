@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://coahxyxvlestc" path="res://sprites/map1_tilemap.png" id="1_w7e88"]
 [ext_resource type="PackedScene" uid="uid://dhcf6ad46txkl" path="res://scenes/assets/tank_controller.tscn" id="2_0e4me"]
 [ext_resource type="Script" path="res://scripts/camera_follower.gd" id="3_m3t6b"]
-[ext_resource type="PackedScene" uid="uid://cto6uew5e0ki3" path="res://scenes/assets/player_ui.tscn" id="3_qyi4b"]
+[ext_resource type="PackedScene" uid="uid://cto6uew5e0ki3" path="res://scenes/assets/debug_ui.tscn" id="3_qyi4b"]
 [ext_resource type="PackedScene" uid="uid://cs506b8kfpcox" path="res://scenes/assets/shoot_target.tscn" id="4_2288j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_faksi"]
@@ -60,7 +60,7 @@ layer_1/tile_data = PackedInt32Array(458744, 0, 2, 524283, 0, 2, 524280, 0, 2, 5
 metadata/_edit_lock_ = true
 
 [node name="PlayerTank" parent="." instance=ExtResource("2_0e4me")]
-position = Vector2(-95, 250)
+position = Vector2(-344, 24)
 rotation = 3.14159
 
 [node name="Camera2D" type="Camera2D" parent="PlayerTank"]
@@ -73,11 +73,13 @@ metadata/_edit_lock_ = true
 player_node_path = NodePath("../PlayerTank")
 
 [node name="ShootTargets" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="ShootTarget" parent="ShootTargets" instance=ExtResource("4_2288j")]
 position = Vector2(-392, 40)
 
 [node name="ShootTarget2" parent="ShootTargets" instance=ExtResource("4_2288j")]
+y_sort_enabled = false
 position = Vector2(-344, 40)
 
 [node name="ShootTarget3" parent="ShootTargets" instance=ExtResource("4_2288j")]
@@ -94,6 +96,8 @@ position = Vector2(-344, 104)
 
 [editable path="ShootTargets/ShootTarget"]
 [editable path="ShootTargets/ShootTarget/Health"]
+[editable path="ShootTargets/ShootTarget2"]
+[editable path="ShootTargets/ShootTarget2/Health"]
 [editable path="ShootTargets/ShootTarget3"]
 [editable path="ShootTargets/ShootTarget3/Health"]
 [editable path="ShootTargets/ShootTarget5"]

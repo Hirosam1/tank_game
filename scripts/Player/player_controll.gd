@@ -33,6 +33,11 @@ func _process(_delta):
 	mov_vec.y = Input.get_axis("player_mov_down","player_mov_up")
 	update_child_nodes()
 
+## Calculates current angular velocity based on player's speed
+func calc_current_ang_vel()->float:
+	var smooth_vel = smoothstep(0.0, 1.0, 1.0 - (abs(speed)/top_speed))
+	return lerp(min_angular_velocity,top_angular_vel, smooth_vel)
+
 func _physics_process(delta):
 	var moved_vec = mov_vec
 	var vel_add = moved_vec.y * acceleration
@@ -41,11 +46,8 @@ func _physics_process(delta):
 			vel_add -= deacceleration * sign(speed)
 	else:
 		speed = 0
-	var smooth_vel = smoothstep(0.0, 1.0, 1.0 - (abs(speed)/top_speed))
-	var ang_vel = moved_vec.x * lerp(min_angular_velocity,
-									 top_angular_vel, 
-									 smooth_vel)
 
+	var ang_vel = moved_vec.x * calc_current_ang_vel()
 	rotation += ang_vel * delta
 	speed = clamp(speed+vel_add*delta,-top_speed,top_speed)
 	velocity = Vector2.DOWN.rotated(rotation) * speed
