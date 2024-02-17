@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dhcf6ad46txkl"]
+[gd_scene load_steps=18 format=3 uid="uid://dhcf6ad46txkl"]
 
 [ext_resource type="Script" path="res://scripts/Player/player_controll.gd" id="1_w3lpw"]
 [ext_resource type="Script" path="res://scripts/Player/player_bullet_spawner.gd" id="2_hully"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ihjvxxyeepx0" path="res://sprites/player_tank_sheet.png" id="4_vt4vl"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="6_gylf2"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="7_10h22"]
+[ext_resource type="Script" path="res://scripts/camera_target.gd" id="8_ldnyu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_domve"]
 radius = 9.0
@@ -172,6 +173,13 @@ z_index = 2
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_vwfhu")
 debug_color = Color(0.839216, 0.207843, 0.168627, 0.419608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("8_ldnyu")
+max_zoom = 3.25
+min_zoom = 1.25
+camera_max_offset = 210
+camera_time_to_reach_pos = 0.4
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="health_depleted" from="Health" to="TankAnimation" method="_on_health_health_depleted"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://cuv0eqnc48g81"]
 
 [ext_resource type="Texture2D" uid="uid://coahxyxvlestc" path="res://sprites/map1_tilemap.png" id="1_4kn1p"]
+[ext_resource type="Script" path="res://scripts/basic_scene.gd" id="1_gy7vq"]
 [ext_resource type="PackedScene" uid="uid://dhcf6ad46txkl" path="res://scenes/assets/tank_player.tscn" id="2_yqi7o"]
-[ext_resource type="Script" path="res://scripts/camera_follower.gd" id="3_gpccv"]
 [ext_resource type="PackedScene" uid="uid://cto6uew5e0ki3" path="res://scenes/assets/debug_ui.tscn" id="4_xs5t6"]
 [ext_resource type="PackedScene" uid="uid://cs506b8kfpcox" path="res://scenes/assets/shoot_target.tscn" id="5_rw584"]
 [ext_resource type="PackedScene" uid="uid://s3pysyl7fsky" path="res://scenes/assets/tank_ai.tscn" id="6_v2nmq"]
@@ -45,6 +45,7 @@ sources/0 = SubResource("TileSetAtlasSource_faksi")
 
 [node name="Scene" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_gy7vq")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -64,12 +65,6 @@ metadata/_edit_lock_ = true
 position = Vector2(-104, 280)
 rotation = 3.14159
 acceleration = 25.0
-
-[node name="Camera2D" type="Camera2D" parent="PlayerTank"]
-rotation = 3.14159
-zoom = Vector2(2.8, 2.8)
-script = ExtResource("3_gpccv")
-metadata/_edit_lock_ = true
 
 [node name="PlayerUi" parent="." instance=ExtResource("4_xs5t6")]
 player_node_path = NodePath("../PlayerTank")
@@ -99,6 +94,7 @@ position = Vector2(-344, 104)
 [node name="AITank" parent="." instance=ExtResource("6_v2nmq")]
 position = Vector2(-232, 56)
 
+[editable path="PlayerTank"]
 [editable path="ShootTargets/ShootTarget"]
 [editable path="ShootTargets/ShootTarget2"]
 [editable path="ShootTargets/ShootTarget3"]

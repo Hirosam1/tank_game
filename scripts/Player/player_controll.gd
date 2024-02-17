@@ -24,6 +24,7 @@ var min_angular_velocity = 1.5
 var top_angular_vel = 2.5
 
 @onready var tank_animation := $TankAnimation
+@onready var tank_camera := $Camera2D
 var mov_vec = Vector2() 
 var speed = 0.0
 
@@ -61,6 +62,9 @@ func _physics_process(delta):
 	var col: KinematicCollision2D =  move_and_collide(velocity*delta)
 	if(col):
 		speed = 0
+	
+	tank_camera.update_camera_position(global_position,
+									   global_rotation,speed,delta)
 
 func _on_health_health_depleted():
 	pass # Replace with function body.

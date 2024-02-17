@@ -1,7 +1,9 @@
 extends Node2D
+
 ## Scene to the instanec of an bullet.
 @export
 var bullet_asset : PackedScene
+
 ## Delay, in secons, of between each fire.
 @export
 var shoot_delay = 1.0

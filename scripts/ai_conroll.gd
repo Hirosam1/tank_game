@@ -43,6 +43,10 @@ func calc_current_ang_vel()->float:
 	var smooth_vel = smoothstep(0.0, 1.0, 1.0 - (abs(speed)/top_speed))
 	return lerp(min_angular_velocity,top_angular_vel, smooth_vel)
 
+## Must implement
+func _handle_physics():
+	pass
+
 func _physics_process(delta):
 	pass
 	
