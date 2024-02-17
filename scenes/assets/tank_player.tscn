@@ -1,71 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://dhcf6ad46txkl"]
+[gd_scene load_steps=15 format=3 uid="uid://dhcf6ad46txkl"]
 
 [ext_resource type="Script" path="res://scripts/Player/player_controll.gd" id="1_w3lpw"]
 [ext_resource type="Script" path="res://scripts/Player/player_bullet_spawner.gd" id="2_hully"]
-[ext_resource type="Script" path="res://scripts/tank_animation.gd" id="4_6jwn7"]
 [ext_resource type="PackedScene" uid="uid://c3hyedkxtt3ul" path="res://scenes/assets/bullet.tscn" id="4_pwpt5"]
 [ext_resource type="Texture2D" uid="uid://ihjvxxyeepx0" path="res://sprites/player_tank_sheet.png" id="4_vt4vl"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="6_gylf2"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="7_10h22"]
+[ext_resource type="PackedScene" uid="uid://cwo0k342a1yay" path="res://scenes/assets/tank_animation.tscn" id="7_ahlhr"]
 [ext_resource type="Script" path="res://scripts/camera_target.gd" id="8_ldnyu"]
+[ext_resource type="PackedScene" uid="uid://dwjuvjykspuod" path="res://scenes/assets/fx_sprite.tscn" id="9_4f2q7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_domve"]
 radius = 9.0
-
-[sub_resource type="Animation" id="Animation_2hb60"]
-resource_name = "Idle"
-length = 0.001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TankSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_g0u3l"]
-resource_name = "Moving"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TankSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
-[sub_resource type="Animation" id="Animation_kqcrg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TankSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_km24e"]
-_data = {
-"Idle": SubResource("Animation_2hb60"),
-"Moving": SubResource("Animation_g0u3l"),
-"RESET": SubResource("Animation_kqcrg")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ljwm"]
 size = Vector2(6, 14)
@@ -107,16 +53,11 @@ texture = ExtResource("4_vt4vl")
 offset = Vector2(0, 5)
 hframes = 3
 
-[node name="TankAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_km24e")
-}
-script = ExtResource("4_6jwn7")
-max_animation_speed = 14.0
-
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("6_gylf2")
+fx_sprites_path = NodePath("../FXSprite")
 health = 180
+metadata/_edit_lock_ = true
 
 [node name="RightHurtbox" type="Area2D" parent="Health"]
 z_index = 2
@@ -174,6 +115,11 @@ position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_vwfhu")
 debug_color = Color(0.839216, 0.207843, 0.168627, 0.419608)
 
+[node name="TankAnimation" parent="." instance=ExtResource("7_ahlhr")]
+
+[node name="FXSprite" parent="." instance=ExtResource("9_4f2q7")]
+visible = false
+
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("8_ldnyu")
 max_zoom = 3.25
@@ -182,4 +128,3 @@ camera_max_offset = 210
 camera_time_to_reach_pos = 0.4
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
-[connection signal="health_depleted" from="Health" to="TankAnimation" method="_on_health_health_depleted"]

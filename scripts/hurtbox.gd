@@ -11,5 +11,7 @@ var damage_negator := 0
 @export
 var id: String = ""
 
+@onready var hurt_spot := $HurtSpot
+
 func hurt(val: int):
 	get_parent().damage(self, val-damage_negator)

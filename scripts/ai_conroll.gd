@@ -55,3 +55,7 @@ func _on_health_health_depleted():
 
 func _on_tank_animation_finished_destroy_animation():
 	queue_free()
+
+
+func _on_tank_health_health_depleted():
+	pass # Replace with function body.

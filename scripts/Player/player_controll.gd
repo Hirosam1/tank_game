@@ -50,7 +50,7 @@ func _physics_process(delta):
 	var moved_vec = mov_vec
 	var vel_add = moved_vec.y * acceleration
 	if(abs(speed) > 0.1):
-		if(vel_add*sign(speed) < 0.1):
+		if(vel_add*sign(speed) < 0.01):
 			vel_add -= deacceleration * sign(speed)
 	else:
 		speed = 0

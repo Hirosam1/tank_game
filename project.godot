@@ -17,11 +17,12 @@ config/icon="res://sprites/icon.svg"
 [autoload]
 
 GlobalSignals="*res://scripts/autoloads/global_signals.gd"
+WorldDimensions="*res://scripts/autoloads/world_dimension.gd"
 
 [display]
 
 window/size/viewport_width=860
-window/size/viewport_height=480
+window/size/viewport_height=680
 
 [file_customization]
 

@@ -1,163 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://s3pysyl7fsky"]
+[gd_scene load_steps=7 format=3 uid="uid://s3pysyl7fsky"]
 
 [ext_resource type="Script" path="res://scripts/ai_conroll.gd" id="1_agoah"]
-[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_ifuck"]
-[ext_resource type="Script" path="res://scripts/health.gd" id="4_qt12e"]
+[ext_resource type="PackedScene" uid="uid://i4uy7uwi07pv" path="res://scenes/assets/tank_health.tscn" id="3_txxgh"]
 [ext_resource type="Texture2D" uid="uid://djuirneunpx4e" path="res://sprites/AITank_sheet.png" id="4_xc4ad"]
-[ext_resource type="Script" path="res://scripts/tank_animation.gd" id="5_hpc0d"]
-[ext_resource type="Texture2D" uid="uid://decrmkmjcdw50" path="res://sprites/fx_sheet.png" id="7_dqgbw"]
+[ext_resource type="PackedScene" uid="uid://cwo0k342a1yay" path="res://scenes/assets/tank_animation.tscn" id="5_wdanl"]
+[ext_resource type="PackedScene" uid="uid://dwjuvjykspuod" path="res://scenes/assets/fx_sprite.tscn" id="6_jq4ul"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_domve"]
 radius = 9.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3sb6"]
-size = Vector2(6, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_axp4h"]
-size = Vector2(6, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_otlj6"]
-size = Vector2(8, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1qnd"]
-size = Vector2(10, 2)
-
-[sub_resource type="Animation" id="Animation_2hb60"]
-resource_name = "Idle"
-length = 0.001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TankSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_g0u3l"]
-resource_name = "Moving"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TankSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
-[sub_resource type="Animation" id="Animation_kqcrg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TankSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FXSprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FXSprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_ttv00"]
-resource_name = "destroy"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FXSprite:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FXSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
-}
-
-[sub_resource type="Animation" id="Animation_aa3na"]
-resource_name = "destroying"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FXSprite:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FXSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_km24e"]
-_data = {
-"Idle": SubResource("Animation_2hb60"),
-"Moving": SubResource("Animation_g0u3l"),
-"RESET": SubResource("Animation_kqcrg"),
-"destroy": SubResource("Animation_ttv00"),
-"destroying": SubResource("Animation_aa3na")
-}
 
 [node name="AITank" type="CharacterBody2D"]
 z_index = 1
@@ -179,80 +29,18 @@ texture = ExtResource("4_xc4ad")
 offset = Vector2(0, 5)
 hframes = 3
 
-[node name="Health" type="Node2D" parent="."]
-script = ExtResource("4_qt12e")
-health = 180
+[node name="TankHealth" parent="." instance=ExtResource("3_txxgh")]
+fx_sprites_path = NodePath("../FXSprite")
 
-[node name="RightHurtbox" type="Area2D" parent="Health"]
-z_index = 2
-collision_layer = 2
-collision_mask = 4
-script = ExtResource("4_ifuck")
-damage_negator = 20
-id = "Right"
+[node name="TankAnimation" parent="." instance=ExtResource("5_wdanl")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Health/RightHurtbox"]
-z_index = 2
-position = Vector2(-3, -1)
-shape = SubResource("RectangleShape2D_s3sb6")
-debug_color = Color(0.839216, 0.207843, 0.168627, 0.419608)
-
-[node name="LeftHurtbox" type="Area2D" parent="Health"]
-z_index = 2
-collision_layer = 2
-collision_mask = 4
-script = ExtResource("4_ifuck")
-damage_negator = 20
-id = "Left"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Health/LeftHurtbox"]
-z_index = 2
-position = Vector2(3, -1)
-shape = SubResource("RectangleShape2D_axp4h")
-debug_color = Color(0.839216, 0.207843, 0.168627, 0.419608)
-
-[node name="FrontHurtbox" type="Area2D" parent="Health"]
-z_index = 2
-collision_layer = 2
-collision_mask = 4
-script = ExtResource("4_ifuck")
-damage_negator = -8
-id = "Front"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Health/FrontHurtbox"]
-z_index = 2
-position = Vector2(0, 7)
-shape = SubResource("RectangleShape2D_otlj6")
-debug_color = Color(0.839216, 0.207843, 0.168627, 0.419608)
-
-[node name="BackHurtbox" type="Area2D" parent="Health"]
-z_index = 2
-collision_layer = 2
-collision_mask = 4
-script = ExtResource("4_ifuck")
-damage_negator = 8
-id = "Back"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Health/BackHurtbox"]
-z_index = 2
-position = Vector2(0, -9)
-shape = SubResource("RectangleShape2D_t1qnd")
-debug_color = Color(0.839216, 0.207843, 0.168627, 0.419608)
-
-[node name="TankAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_km24e")
-}
-script = ExtResource("5_hpc0d")
-max_animation_speed = 9.0
-
-[node name="FXSprite" type="Sprite2D" parent="."]
+[node name="FXSprite" parent="." instance=ExtResource("6_jq4ul")]
 visible = false
-texture_filter = 1
-texture = ExtResource("7_dqgbw")
-hframes = 7
+frame = 11
 
-[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
-[connection signal="health_depleted" from="Health" to="TankAnimation" method="_on_health_health_depleted"]
-[connection signal="animation_finished" from="TankAnimation" to="TankAnimation" method="_on_animation_finished"]
+[connection signal="health_depleted" from="TankHealth" to="." method="_on_tank_health_health_depleted"]
+[connection signal="health_depleted" from="TankHealth" to="TankAnimation" method="_on_tank_health_health_depleted"]
+[connection signal="hurted" from="TankHealth" to="TankAnimation" method="_on_tank_health_hurted"]
 [connection signal="finished_destroy_animation" from="TankAnimation" to="." method="_on_tank_animation_finished_destroy_animation"]
+
+[editable path="FXSprite"]

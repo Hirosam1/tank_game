@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3hyedkxtt3ul"]
+[gd_scene load_steps=4 format=3 uid="uid://c3hyedkxtt3ul"]
 
 [ext_resource type="Texture2D" uid="uid://bp7aw70uocxxm" path="res://sprites/bullet.png" id="1_bsfbt"]
 [ext_resource type="Script" path="res://scripts/bullet_behaviour.gd" id="1_r7lil"]
-[ext_resource type="Script" path="res://scripts/damagebox.gd" id="3_42u1w"]
+[ext_resource type="PackedScene" uid="uid://dsndg7jf2pg87" path="res://scenes/assets/damage_box.tscn" id="3_y8a6b"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1dxqn"]
-radius = 2.0
-
-[node name="s" type="Node2D"]
+[node name="bullet" type="Node2D"]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_r7lil")
@@ -17,22 +14,10 @@ speed = 210.0
 texture_filter = 1
 texture = ExtResource("1_bsfbt")
 
-[node name="DamageBox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 2
-script = ExtResource("3_42u1w")
-object_damage = 40
-root_node = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox"]
-z_index = 2
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_1dxqn")
-debug_color = Color(0.89616, 0.108186, 0.720073, 0.419608)
+[node name="DamageBox" parent="." instance=ExtResource("3_y8a6b")]
 
 [node name="LifeTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
-[connection signal="area_entered" from="DamageBox" to="DamageBox" method="_on_area_entered"]
 [connection signal="timeout" from="LifeTimer" to="." method="de_spawn"]

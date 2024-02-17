@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsndg7jf2pg87"]
+
+[ext_resource type="Script" path="res://scripts/damagebox.gd" id="1_786xt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dxqn"]
+radius = 2.0
+
+[node name="DamageBox" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_786xt")
+object_damage = 40
+root_node = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_1dxqn")
+debug_color = Color(0.89616, 0.108186, 0.720073, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
